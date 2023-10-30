@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import ExpenseItem from './components/ExpenseItem';
+import NoName from './NoName';
 
 function App() {
+  const $h1 = <h1>h1태그입니당</h1>;
+  const $h2 = <h2>h2태그를 jsx를 이용하여 작성! (이 방식을 추천!)</h2>;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <>
+      <NoName />
+      <ExpenseItem />
+      <ExpenseItem />
+      <ExpenseItem />
+      <ExpenseItem />
+      <ExpenseItem />
+      <div className='App'>
+        {$h1}
+        {$h2}
+      </div>
+      <div className='noname'>
+        <input type='text' value='문자열' />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          오늘은 <strong>월요일</strong>,,, 아직도,,, <strong>월요일</strong>,,,
+          <br />
+          토요일까지,,,D-5
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      </div>
+    </>
   );
 }
 
