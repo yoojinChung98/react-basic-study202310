@@ -1,34 +1,40 @@
 import React from 'react';
 import './App.css';
-import ExpenseItem from './components/ExpenseItem';
-import NoName from './NoName';
+import Expenses from './components/Expenses';
+import Hello from './Hello';
 
-function App() {
-  const $h1 = <h1>h1태그입니당</h1>;
-  const $h2 = <h2>h2태그를 jsx를 이용하여 작성! (이 방식을 추천!)</h2>;
-
+// function App() {
+const App = () => {
+  // 지출 항목 객체 배열
+  const expenses = [
+    {
+      title: '바나나',
+      price: 2000,
+      date: new Date(2023, 3 - 1, 23),
+    },
+    {
+      title: 'BBQ치킨',
+      price: 20000,
+      date: new Date(2023, 5 - 1, 21),
+    },
+    {
+      title: '도미노피자',
+      price: 35000,
+      date: new Date(2023, 7 - 1, 4),
+    },
+  ];
   return (
     <>
-      <NoName />
-      <ExpenseItem />
-      <ExpenseItem />
-      <ExpenseItem />
-      <ExpenseItem />
-      <ExpenseItem />
-      <div className='App'>
-        {$h1}
-        {$h2}
-      </div>
-      <div className='noname'>
-        <input type='text' value='문자열' />
-        <p>
-          오늘은 <strong>월요일</strong>,,, 아직도,,, <strong>월요일</strong>,,,
-          <br />
-          토요일까지,,,D-5
-        </p>
-      </div>
+      <Expenses items={expenses} />
+      <Hello>
+        <ul>
+          <li>사과</li>
+          <li>포도</li>
+          <li>복숭아</li>
+        </ul>
+      </Hello>
     </>
   );
-}
+};
 
 export default App;

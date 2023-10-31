@@ -1,3 +1,5 @@
+import React from 'react';
+
 class NoName extends React.Component {
   render() {
     return (
