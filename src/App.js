@@ -1,38 +1,48 @@
-import React from 'react';
-import './App.css';
-import Expenses from './components/Expenses';
-import Hello from './Hello';
+import React, { useEffect, useState } from 'react';
+import MainHeader from './components/SideEffect/MainHeader/MainHeader';
+import Home from './components/SideEffect/Home/Home';
+import Login from './components/SideEffect/Login/Login';
 
-// function App() {
 const App = () => {
-  // 지출 항목 객체 배열
-  const expenses = [
-    {
-      title: '바나나',
-      price: 2000,
-      date: new Date(2023, 3 - 1, 23),
-    },
-    {
-      title: 'BBQ치킨',
-      price: 20000,
-      date: new Date(2023, 5 - 1, 21),
-    },
-    {
-      title: '도미노피자',
-      price: 35000,
-      date: new Date(2023, 7 - 1, 4),
-    },
-  ];
+  // 로그인 상태를 관리하는 변수
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // 화면이 리렌더링 될 때 localStorage를 확인해서
+  // 현재 login-flag가 존재하는지 검사.
+  console.log('로그인 검사 수행');
+
+  // 기존에 로그인 한 사람인지 확인하는 코드는 리렌더링 될 때마다 실행되면 안됨!
+  useEffect(() => {
+    console.log('useEffect 실행! - 최초 렌더링 시 단 한번만 실행됨.');
+    const storedLoginFlag = localStorage.getItem('login-flag');
+    if (storedLoginFlag === '1') {
+      setIsLoggedIn(true);
+    }
+  }, []); // 콜백함수와, 의존성배열을 매개변수로 받음!
+  // 의존성배열에 넣은 상태변수의 상태변화에 따라 useEffect 가 재수행 되도록 할 수 있음.
+
+  // 서버로 로그인을 요청하는 함수 (나중에는 fetch를 통한 백엔드와의 연계가 필요.)
+  const loginHandler = (email, password) => {
+    // 로그인을 했다는 증거로 상태값 변경 및 브라우저에 로그인 값을 1로 표현해서 저장.
+    localStorage.setItem('login-flag', '1');
+    setIsLoggedIn(true);
+  };
+
+  const logoutHandler = () => {
+    localStorage.removeItem('login-flag');
+    setIsLoggedIn(false);
+  };
+
   return (
     <>
-      <Expenses items={expenses} />
-      <Hello>
-        <ul>
-          <li>사과</li>
-          <li>포도</li>
-          <li>복숭아</li>
-        </ul>
-      </Hello>
+      <MainHeader
+        isAuthenticated={isLoggedIn}
+        onLogout={logoutHandler}
+      />
+      <main>
+        {isLoggedIn && <Home />}
+        {!isLoggedIn && <Login onLogin={loginHandler} />}
+      </main>
     </>
   );
 };
