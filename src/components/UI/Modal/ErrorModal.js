@@ -1,7 +1,7 @@
 import React from 'react';
 
-import ReactDOM from 'react-dom';
 // portal을 사용하기 위한 import
+import ReactDOM from 'react-dom';
 
 import Card from '../Card';
 import Button from '../Button/Button';
@@ -37,7 +37,7 @@ const ErrorModal = ({ title, message, onConfirm }) => {
   return (
     <>
       <Portal destId='backdrop-root'>
-        <BackDrop onConfirm={onConfirm} />
+        <BackDrop onConfirm={onConfirm} />,
       </Portal>
 
       <Portal destId='overlay-root'>

@@ -8,14 +8,13 @@ const MealItem = ({ id, price, description, name }) => {
   // addItem -> 장바구니에 상품을 추가하는 함수를 얻어옴.
   const { addItem } = useContext(CartContext);
 
-  // addToCartHandler 라는 함수를 자식에게 전달하기 위해 선언함(amount 값을 걔가 갖고있음)
   const addToCartHandler = (amount) => {
-    addItem({
+    const item = {
       id: id,
       name: name,
       price: price,
       amount: +amount,
-    });
+    };
     addItem(item);
   };
 

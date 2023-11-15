@@ -3,7 +3,7 @@ import './CourseInput.css';
 import Button from '../UI/Button/Button';
 
 const CourseInput = ({ onAdd }) => {
-  const [enteredText, setEnteredText] = useState();
+  const [enteredText, setEnteredText] = useState('');
   // 입력값 검증 상태변수
   const [isValid, setIsValid] = useState(true);
 
@@ -16,7 +16,7 @@ const CourseInput = ({ onAdd }) => {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(enteredText);
+    // console.log(enteredText);
 
     if (enteredText.trim().length === 0) {
       setIsValid(false);
@@ -32,7 +32,6 @@ const CourseInput = ({ onAdd }) => {
       <div className={`form-control ${!isValid ? 'invalid' : ''}`}>
         <label>나의 목표</label>
         <input
-          style={{}}
           type='text'
           onChange={textChangeHandler}
           value={enteredText}

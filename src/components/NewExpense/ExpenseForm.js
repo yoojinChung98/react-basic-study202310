@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import './ExpenseForm.css';
 
 const ExpenseForm = ({ onSaveExpense, onToggle }) => {
-  //   const [title, setTitle] = useState('');
-  //   const [price, setPrice] = useState('');
-  //   const [date, setDate] = useState('');
-
   const [userInput, setUserInput] = useState({
     title: '',
     price: '',
@@ -31,33 +27,22 @@ const ExpenseForm = ({ onSaveExpense, onToggle }) => {
   const dateChangeHandler = (e) => {
     setUserInput({
       ...userInput,
-      date: new Date(e.target.value),
+      date: e.target.value,
     });
   };
 
   const formSubmitHandler = (e) => {
     e.preventDefault(); // submit 차단
-    console.log('submit 버튼을 누름!');
-    console.log(onSaveExpense);
 
-    // 사용자가 입력한 값을 객체로 포장
-    // const NewExpense = {
-    //   title: title,
-    //   price: price,
-    //   date: date,
-    // };
-
-    // Date 입력창에 값이 변하지 않아서 추가한 함수()
-    // 전달할 때 객체를 다시 포장...하는게,,,맞나봄.
     const newExpense = {
       title: userInput.title,
       price: +userInput.price,
       date: new Date(userInput.date),
     };
 
-    onSaveExpense(userInput);
+    onSaveExpense(newExpense);
 
-    // 사용자가 사용한 입력칸을 비워줌
+    // 입력창 리셋
     setUserInput({
       title: '',
       price: '',
@@ -68,7 +53,7 @@ const ExpenseForm = ({ onSaveExpense, onToggle }) => {
   };
 
   const cancelInsertHandler = () => {
-    console.log('취소 버튼 눌림!');
+    // console.log('취소 버튼 누름!');
     onToggle();
   };
 

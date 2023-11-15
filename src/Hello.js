@@ -2,7 +2,7 @@ import React from 'react';
 import Card from './components/UI/Card';
 
 const Hello = (props) => {
-  console.log('Hello component!');
+  console.log('Hello Component!');
   console.log(props);
 
   return (
@@ -15,4 +15,4 @@ const Hello = (props) => {
   );
 };
 
-export default Card;
+export default Hello;

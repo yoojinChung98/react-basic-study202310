@@ -1,9 +1,9 @@
 import React from 'react';
-import { useState } from 'react';
 import styles from './UserList.module.css';
 import Card from '../UI/Card';
 
 const UserList = ({ users }) => {
+  console.log(users);
   return (
     <Card className={styles.users}>
       <ul>

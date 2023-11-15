@@ -3,8 +3,9 @@ import './ExpensesFilter.css';
 
 const ExpensesFilter = ({ onChangeFilter }) => {
   const dropdownChangeHandler = (e) => {
-    // selected 된 year의 값을 Expenses에서 사용할 수 있도록 올려보내보세요.
-    const selectedYear = e.target.selectedIndex;
+    //selected된 year의 값을 Expenses에서 사용할 수 있도록
+    //올려보내 보세요.
+    const selectedYear = e.target.value;
     onChangeFilter(selectedYear);
   };
 

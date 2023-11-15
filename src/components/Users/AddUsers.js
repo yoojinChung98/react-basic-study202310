@@ -5,10 +5,10 @@ import Button from '../UI/Button/Button';
 import ErrorModal from '../UI/Modal/ErrorModal';
 
 const AddUsers = ({ onAddUser }) => {
-  //  에러 상태 관리
+  // 에러 상태 관리
   const [error, setError] = useState(null);
 
-  // input dom 가져오기 //useRef를 이용하여
+  // input dom 가져오기
   const nameInput = useRef();
   const ageInput = useRef();
 
@@ -35,11 +35,13 @@ const AddUsers = ({ onAddUser }) => {
       });
       return;
     }
+
     onAddUser({ username, age });
 
     nameInput.current.value = '';
     ageInput.current.value = '';
   };
+
   return (
     // React.Fragment
     <>

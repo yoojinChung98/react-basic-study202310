@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import MainHeader from './components/SideEffect/MainHeader/MainHeader';
-import Home from './components/SideEffect/Home/Home';
-import Login from './components/SideEffect/Login/Login';
-// 컨텍스트 불러오기
-import AuthContext from './store/auth-context';
-import Cart from './components/Food/Cart/Cart';
+import React, { useState } from 'react';
 import Header from './components/Food/Layout/Header';
 import Meals from './components/Food/Meals/Meals';
+import Cart from './components/Food/Cart/Cart';
 import CartProvider from './store/CartProvider';
 
 const App = () => {
